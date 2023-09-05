@@ -32,6 +32,34 @@
         <input type="text" placeholder="Search here..." />
       </div>
     </nav>
+
+    //form before Generate
+    <section>
+    <div class="form">
+    <fieldset>
+      <legend>DETAILS</legend> 
+    <form action="genform.php" method="POST">
+        <label for="APL_ID">Application Number:</label>
+        <input type="text" id="APL_ID" name="APL_ID" required><br><br>
+
+        <label for="NAME">Name:</label>
+        <input type="text" id="NAME" name="NAME" required><br><br>
+
+        <label for="DEPT">Department:</label>
+        <select id="DEPT" name="DEPT" >
+            <option value="blank"></option>
+            <option value="interview">INTERVIEW</option>
+            <option value="fees">FEES</option>
+            <option value="enquiry">ENQUIRY</option>
+            <option value="other">OTHER</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit" id="submit">
+    </form>
+  </fieldset>
+    </div>
+    </section>
+
        <section>
       <button class="show-modal">Generate</button>
       <span class="overlay"></span>
