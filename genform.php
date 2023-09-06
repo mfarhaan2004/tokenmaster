@@ -1,8 +1,8 @@
-<?php
-$host = "mysql";
-$username = "root";
-$password = "
-";
+
+    <?php
+$host = "localhost";
+$username = "login";
+$password = "34";
 $database = "test";
 
 // Connection
@@ -24,7 +24,7 @@ $sql = "INSERT INTO login (APL_NO, NAME, DEPT) VALUES ('$APL_NO', '$NAME', '$DEP
 if ($connection->query($sql) === TRUE) {
     echo "Record added successfully";
 } else {
-    echo "Error: " . $sql . "<br>" . $connection->error;
+    echo "Error: ". $sql . "<br>" . $connection->error;
 }
 
 // Close the database connection
