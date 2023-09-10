@@ -35,7 +35,7 @@
        <section>
      <!-- <button class="show-modal">Generate</button>-->
       <span class="overlay"></span>
-      <div class="modal-box">
+      <div class="modal-box" id="success-modal">
         <i class="fa-regular fa-circle-check"></i>
         <h2>Token Generated</h2>
         <h3>Your Token has been successfully Generated.</h3>
@@ -48,7 +48,7 @@
        <!---form before Generate---->
        <div class="container">
         <h1>Application Form</h1>
-        <form action="" method="post">
+        <form id="myForm" action="" method="post">
             <div class="form-group">
                 <label for="application-number">Application Number</label>
                 <input type="text" id="application-number" name="application-number" required>
@@ -68,49 +68,43 @@
                 <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
-                <button  id="enqueue-button"class="show-modal" type="submit">Generate</button>
+                <button   id="" id="enqueue-button"class="show-modal" type="submit">Generate</button>
             </div>
         </form>
     </div>
     
-      <script>
-     const successModal = document.getElementById("successModal");
-        const generateForm = document.getElementById("generateForm");
+<script>
+    const section = document.querySelector("section");
+    const overlay = document.querySelector(".overlay");
+    const showBtn = document.querySelector(".show-modal");
+    const closeBtn = document.querySelector(".close-btn");
 
-        // Hide the success modal initially
-        successModal.style.display = "none";
+   const form = document.getElementById("myForm");
+    const applicationNumberInput = document.getElementById("application-number");
+    const departmentInput = document.getElementById("department");
+    const nameInput = document.getElementById("name");
 
-        generateForm.addEventListener("submit", async function (e) {
-            e.preventDefault(); // Prevent the form from submitting
+    form.addEventListener("submit", (e) => {
+        e.preventDefault(); // Prevent form submission
 
-            const applicationNumber = document.getElementById("application-number").value;
-            const department = document.getElementById("department").value;
-            const name = document.getElementById("name").value;
-
-            if (name) {
-                // Simulate a successful form submission (replace with actual form submission logic)
-                const isSubmissionSuccessful = await simulateFormSubmission(applicationNumber, department, name);
-
-                if (isSubmissionSuccessful) {
-                    // Show the success modal only if the submission is successful
-                    successModal.style.display = "block";
-                } else {
-                    // Handle the case where the form submission was not successful (e.g., display an error message)
-                    console.error("Form submission failed.");
-                }
-            }
-        });
-
-        function simulateFormSubmission(applicationNumber, department, name) {
-            // Simulate a successful form submission (replace with actual logic)
-            return new Promise((resolve, reject) => {
-                // Simulate a successful submission here
-                setTimeout(() => {
-                    resolve(true);
-                }, 1000); // Simulating a successful submission after a 1-second delay
-            });
+        // Check if all form fields are filled
+        if (applicationNumberInput.value && departmentInput.value && nameInput.value) {
+            section.classList.add("active");
         }
-    </script>
+    });
+
+    showBtn.addEventListener("click", () => {
+        // Check if all form fields are filled
+        if (applicationNumberInput.value && departmentInput.value && nameInput.value) {
+            section.classList.add("active");
+        }
+    });
+
+    overlay.addEventListener("click", () => section.classList.remove("active"));
+    closeBtn.addEventListener("click", () => section.classList.remove("active"));
+</script>
+
+   
       
       
   </body>
