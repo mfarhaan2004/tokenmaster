@@ -32,23 +32,11 @@
         <input type="text" placeholder="Search here..." />
       </div>
     </nav>
-       <section>
-     <!-- <button class="show-modal">Generate</button>-->
-      <span class="overlay"></span>
-      <div class="modal-box" id="success-modal">
-        <i class="fa-regular fa-circle-check"></i>
-        <h2>Token Generated</h2>
-        <h3>Your Token has been successfully Generated.</h3>
-        <div class="buttons">
-          <button id="enqueue-button" class="close-btn">OK</button>
-          
-        </div>
-      </div>
-    </section>
+     
        <!---form before Generate---->
        <div class="container">
         <h1>Application Form</h1>
-        <form id="myForm" action="" method="post">
+        <form id="myForm" action="genform.php" method="POST">
             <div class="form-group">
                 <label for="application-number">Application Number</label>
                 <input type="text" id="application-number" name="application-number" required>
@@ -98,7 +86,7 @@
           
     <script src="script.js"></script>
     
-<script>
+<!-----<script>
     const section = document.querySelector("section");
     const overlay = document.querySelector(".overlay");
     const showBtn = document.querySelector(".show-modal");
@@ -127,7 +115,7 @@
 
     overlay.addEventListener("click", () => section.classList.remove("active"));
     closeBtn.addEventListener("click", () => section.classList.remove("active"));
-</script>
+</script>------>
 
    
       

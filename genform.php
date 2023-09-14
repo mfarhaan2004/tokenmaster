@@ -13,9 +13,9 @@ if ($connection->connect_error) {
 }
 
 // Retrieve data 
-$APL_NO = $_POST['APL_NO'];
-$NAME = $_POST['NAME'];
-$DEPT = $_POST['DEPT'];
+$APL_NO = $_POST['application-number'];
+$NAME = $_POST['name'];
+$DEPT = $_POST['department'];
 
 // SQL query to insert data into the 'login' table
 $sql = "INSERT INTO login (APL_NO, NAME, DEPT) VALUES ('$APL_NO', '$NAME', '$DEPT')";
