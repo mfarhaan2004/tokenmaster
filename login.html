@@ -21,22 +21,22 @@
                 </div>
                 <span>or use your email for registration</span>
                 <div class="infield">
-                    <input type="text" placeholder="Name" />
+                    <input id="signup-name" type="text" placeholder="Name" />
                     <label></label>
                 </div>
                 <div class="infield">
-                    <input type="email" placeholder="Email" name="email"/>
+                    <input id="signup-email" type="email" placeholder="Email" name="email"/>
                     <label></label>
                 </div>
                 <div class="infield">
-                    <input type="password" placeholder="Password" />
+                    <input id="signup-password" type="password" placeholder="Password" />
                     <label></label>
                 </div>
-                <button>Sign Up</button>
+                <button id="signup-button" >Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form  id="signinForm" action="#">
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -45,15 +45,15 @@
                 </div>
                 <span>or use your account</span>
                 <div class="infield">
-                    <input type="email" placeholder="Email" name="email"/>
+                    <input id="signin-email" type="email" placeholder="Email" name="email"/>
                     <label></label>
                 </div>
                 <div class="infield">
-                    <input type="password" placeholder="Password" />
+                    <input id="signin-password" type="password" placeholder="Password" />
                     <label></label>
                 </div>
                 <a href="#" class="forgot">Forgot your password?</a>
-                <button >Sign In</button>
+                <button id="signin-button" href="home.html" >Sign In</button>
             </form>
         </div>
         <div class="overlay-container" id="overlayCon">
@@ -85,7 +85,33 @@
            })
        });
     </script>
-    
+    <script>const signupNameInput = document.getElementById("signup-name");
+const signupEmailInput = document.getElementById("signup-email");
+const signupPasswordInput = document.getElementById("signup-password");
+const signupButton = document.getElementById("signup-button");
+
+const signinEmailInput = document.getElementById("signin-email");
+const signinPasswordInput = document.getElementById("signin-password");
+const signinButton = document.getElementById("signin-button");
+
+signupButton.addEventListener("click", () => {
+    const name = signupNameInput.value;
+    const email = signupEmailInput.value;
+    const password = signupPasswordInput.value;
+
+    if (name && email && password) {
+        // Simulate a sign-up process (replace this with your actual sign-up logic)
+        // After successful sign-up, automatically fill in the sign-in form
+        signinEmailInput.value = email;
+        signinPasswordInput.value = password;
+
+        // Optionally, you can also submit the sign-in form programmatically
+        // This will trigger the sign-in logic
+        // Replace 'signinForm' with the actual ID of your sign-in form
+        document.getElementById("signinForm").submit();
+    }
+});
+</script>
     
     <!-------login--->
    

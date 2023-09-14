@@ -228,9 +228,9 @@ button:hover {
 }
 button.show-modal,
 .modal-box {
-  position: fixed;
+  position: absolute;
   left: 50%;
-  top: 61%;
+  top: 91%;
   transform: translate(-50%, -50%);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -301,8 +301,13 @@ section.active .modal-box {
 /*---------token staus----*/
 .queue-display {
     max-width: 600px;
-    margin: 0px auto;
+    margin: 0px 0px;;
     color: #243B55;
+    position: fixed;
+    top: 22%;
+    left: 10%;
+    
+    
 }
 
 .current-number {
@@ -338,6 +343,9 @@ section.active .modal-box {
     margin-top: 20px;
     font-size: 30px;
     color: #243B55;
+    position: fixed;
+    left: 70%;
+    top: 17%;
 }
 
 ul {
