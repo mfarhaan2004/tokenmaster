@@ -35,7 +35,6 @@
       <i class="uil uil-bars navOpenBtn"></i>
       <a href="#" class="logo">Token Gen</a>
       
-
        <ul class="nav-links">
         <i class="uil uil-times navCloseBtn"></i>
         <li><a href="home.html">Home</a></li>
@@ -120,3 +119,6 @@
       
     </body>
     </html>
+
+    
+          
