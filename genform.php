@@ -1,4 +1,4 @@
-   <?php
+<?php
 $host = "localhost";
 $username = "login";
 $password = "34";
@@ -21,7 +21,8 @@ $DEPT = $_POST['department'];
 $sql = "INSERT INTO login (APL_NO, NAME, DEPT) VALUES ('$APL_NO', '$NAME', '$DEPT')";
 
 if ($connection->query($sql) === TRUE) {
-    echo "Record added successfully";
+    header("Location: gen.html");
+    exit();
 } else {
     echo "Error: ". $sql . "<br>" . $connection->error;
 }
