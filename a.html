@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Number Display</title>
+    <script>
+        // Function to update the current token number on the page
+     // Function to update the current token number on the page
+function updateTokenNumber() {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.updateCurrentNumber) {
+                // Update the current number only when needed
+                document.getElementById("current-number").textContent = response.currentNumber;
+            }
+        }
+    };
+    xhr.open("GET", "get-current-number.php", true);
+    xhr.send();
+}
+
+
+        // Call the updateTokenNumber function when the page loads
+        window.onload = updateTokenNumber;
+    </script>
+</head>
+<body>
+    <div class="current-number">
+        <p>Current Number:</p>
+        <span id="current-number">0</span>
+    </div>
+</body>
+</html>
