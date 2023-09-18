@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (your meta tags and title) ... -->
+    <script>
+        // Function to update the waiting list on the page
+        function updateWaitingList() {
+            const waitingListElement = document.getElementById("waiting-list");
+            waitingListElement.innerHTML = '';
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const waitingList = JSON.parse(xhr.responseText);
+                    for (let i = 0; i < waitingList.length; i++) {
+                        const listItem = document.createElement("li");
+                        listItem.textContent = waitingList[i];
+                        waitingListElement.appendChild(listItem);
+                    }
+                }
+            };
+            xhr.open("GET", "get_waiting_list.php", true);
+            xhr.send();
+        }
+
+        // Function to generate a new token and update the queue
+        function enqueue() {
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    updateWaitingList();
+                    updateTokenNumber();
+                }
+            };
+            xhr.open("GET", "enqueue.php", true);
+            xhr.send();
+        }
+
+        // Function to serve the next token and update the queue
+ // Function to serve the next token and update the queue
+// Function to serve the next token and update the queue
+function dequeue() {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            if (response.currentNumber !== null) {
+                // Update the current number only when there's a next token
+                document.getElementById("current-number").textContent = response.currentNumber;
+            }
+            // Clear the waiting list element
+            const waitingListElement = document.getElementById("waiting-list");
+            waitingListElement.innerHTML = '';
+            
+            // Populate the waiting list with updated items
+            response.waitingList.forEach(function(item) {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                waitingListElement.appendChild(listItem);
+            });
+        }
+    };
+    xhr.open("GET", "dequeue.php", true);
+    xhr.send();
+}
+
+        // Function to reset the token status and waiting list
+        function resetQueue() {
+            const xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    updateWaitingList();
+                    updateTokenNumber();
+                }
+            };
+            xhr.open("GET", "reset.php", true);
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <div class="queue-display">
+        <div class="queue">
+            <div class="queue-item">
+                <span class="ticket-number">0</span>
+            </div>
+            <!-- Add more queue items dynamically using JavaScript -->
+        </div>
+        <div class="waiting-list">
+            <h2>Waiting List</h2>
+            <ul id="waiting-list">
+                <!-- Add waiting list items dynamically using JavaScript -->
+            </ul>
+        </div>
+        <button id="enqueue-button" onclick="enqueue()">Join Queue</button>
+        <button id="dequeue-button" onclick="dequeue()">Serve Next</button>
+        <button id="reset-button" onclick="resetQueue()">Reset</button>
+    </div>
+</body>
+</html>

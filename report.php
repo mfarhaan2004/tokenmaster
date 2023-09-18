@@ -17,36 +17,7 @@
 </head>
 <body>
 
-<!--=============== HEADER ===============-->
-<header class="header" id="header">
-    <nav class="nav container">
-        <a href="#" class="nav__logo"> Token Gen</a>
 
-        <div class="nav__menu" id="nav-menu">
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a href="d.html" class="nav__link">Home</a>
-                </li>
-                <li class="nav__item">
-                    <a href="d.html#about" class="nav__link">Check Queue</a>
-                </li>
-                <li class="nav__item">
-                    <a href="b.html" class="nav__link active-link">Generate</a>
-                </li>
-                <li class="nav__item">
-                    <a href="d.html#contact" class="nav__link">Contact us</a>
-                </li>
-
-            </ul>
-        </div>
-
-        <div class="nav__toggle" id="nav-toggle">
-            <i class='bx bx-grid-alt'></i>
-        </div>
-
-        <a href="" class="button button__header">Profile</a>
-    </nav>
-</header><br><br>
       <?php
         // Your PHP code to fetch data from the database goes here
         $servername = "localhost";
@@ -60,7 +31,7 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = "SELECT * FROM login";
+        $sql = "SELECT * FROM report";
         $result = $conn->query($sql);
 ?>
 
@@ -86,15 +57,15 @@
         <tr>
             <th>Applicant_number</th>
             <th>name</th>
-            <th>dept</th>
+            <th>department</th>
         </tr>
         <?php
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . $row["Applicant_no"] . "</td>";
+                echo "<td>" . $row["application-number"] . "</td>";
                 echo "<td>" . $row["name"] . "</td>";
-                echo "<td>" . $row["dept"] . "</td>";
+                echo "<td>" . $row["department"] . "</td>";
                 echo "</tr>";
             }
         } else {
@@ -111,7 +82,6 @@
         </a>
 
         <!--=============== MAIN JS ===============-->
-        <script src="script.js"></script>
-        <script scr="queue.js"></script>
+      
     </body>
     </html>
